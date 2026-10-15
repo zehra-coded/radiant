@@ -1,0 +1,38 @@
+"""Consolidated schema exports."""
+from backend.schemas.result import (  # noqa: F401
+    Chunk,
+    EvidenceItem,
+    ExplanationBlock,
+    FinalFinding,
+    FusionConflict,
+    FusionResult,
+    HumanReviewBlock,
+    RadiantResult,
+    ReportExtraction,
+    ReportFinding,
+    SafetyResult,
+    TriageResult,
+    UncertaintySignal,
+    UncertaintySignalsModel,
+    VisionFinding,
+    VisionResult,
+)
+
+__all__ = [
+    "Chunk",
+    "EvidenceItem",
+    "ExplanationBlock",
+    "FinalFinding",
+    "FusionConflict",
+    "FusionResult",
+    "HumanReviewBlock",
+    "RadiantResult",
+    "ReportExtraction",
+    "ReportFinding",
+    "SafetyResult",
+    "TriageResult",
+    "UncertaintySignal",
+    "UncertaintySignalsModel",
+    "VisionFinding",
+    "VisionResult",
+]

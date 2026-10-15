@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Model weights / checkpoints
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Datasets (never commit)
+data/nih/
+data/radsprl/
+
+# Logs
+logs/
+*.log
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

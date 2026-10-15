@@ -1,0 +1,39 @@
+# RADIANT requirements — pinned after Stage 2 installation.
+# Versions recorded from `pip freeze` inside F:\radiant-venv on
+# Windows 11 / Python 3.11.9.
+
+# Core
+python-dotenv==1.2.4
+pydantic==2.14.1
+
+# Vision
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu
+torchxrayvision==1.5.5
+pillow==12.3.0
+
+# Embeddings + retrieval
+sentence-transformers==6.1.0
+faiss-cpu==1.15.1
+numpy==2.4.6
+
+# API
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+
+# LLM client
+openai==3.29.0
+
+# Frontend
+streamlit==1.65.0
+
+# Testing
+pytest==9.1.1
+httpx==0.28.1
+
+# NOTE: vLLM is intentionally NOT listed (rule 3.6 / v3 spec §6).
+# NOTE: transformers, pandas, scikit-learn, scipy, scikit-image are
+#       transitive dependencies of the packages above and are not
+#       listed here on purpose — pinning them would over-constrain
+#       the dependency graph.
