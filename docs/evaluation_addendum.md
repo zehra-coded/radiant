@@ -4,9 +4,9 @@ Five pipeline runs on the same NIH image with different reports. Citation validi
 
 | Case | Generator | Citations total | Valid | Validity | Sentences | Grounded | Ratio |
 |---|---|---|---|---|---|---|---|
-| conflict | amd_token_factory | 5 | 5 | 1.0 | 6 | 3 | 0.5 |
+| conflict | amd_token_factory | 5 | 5 | 1.0 | 12 | 5 | 0.4166666666666667 |
 | agreement | template | 5 | 5 | 1.0 | 8 | 4 | 0.5 |
-| negation | amd_token_factory | 5 | 5 | 1.0 | 10 | 4 | 0.4 |
+| negation | template | 5 | 5 | 1.0 | 8 | 4 | 0.5 |
 | empty | template | 5 | 5 | 1.0 | 8 | 4 | 0.5 |
 | brief | template | 5 | 5 | 1.0 | 8 | 4 | 0.5 |
 

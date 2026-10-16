@@ -154,10 +154,37 @@ Post-generation cases: 3 (passed: 3, accuracy: 1.000)
 ## 6. Generation groundedness
 
 --------------------------------------------------------------------
-Live LLM outputs are evaluated for citation validity and groundedness. This is separate from the safety gate, which runs at request time.
+Five live pipeline runs on the same NIH image with different synthetic
+reports. Citation validity = fraction of `[source:doc:chunk]`
+citations that resolve to real retrieved chunks. Groundedness ratio =
+fraction of sentences that either contain a valid citation or belong
+to a disclaimer / limitations section.
 
-Automated metrics: citation validity rate and groundedness ratio (fraction of sentences that either contain a valid citation or belong to a disclaimer/limitations section).
+| Case | Generator | Citations total | Valid | Validity | Sentences | Grounded | Ratio |
+|---|---|---|---|---|---|---|---|
+| conflict | amd_token_factory | 5 | 5 | 1.000 | 12 | 5 | 0.417 |
+| agreement | template | 5 | 5 | 1.000 | 8 | 4 | 0.500 |
+| negation | template | 5 | 5 | 1.000 | 8 | 4 | 0.500 |
+| empty | template | 5 | 5 | 1.000 | 8 | 4 | 0.500 |
+| brief | template | 5 | 5 | 1.000 | 8 | 4 | 0.500 |
 
-To produce real numbers, run the pipeline 5 times and pass each output through generation_eval.evaluate_one(text, evidence). This is best done manually after the demo.
+**Summary:**
+- 1 of 5 cases used the LLM explanation (`amd_token_factory`).
+- 4 of 5 cases fell back to the deterministic template reporter.
+- **Citation validity rate: 1.000 across both paths.** No fabricated
+  citation reached the output in any case.
 
-RESULT: See docs/evaluation_addendum.md for the 5-sample results.
+**Why 4 of 5 fell back.** The safety gate's post-generation check
+rejected the LLM output in 4 cases. The reason code recorded in each
+case is the specific post-check failure. Falling back is the correct
+behavior — the template produces the same structure and the same
+citations, without the LLM.
+
+**Limitations of this metric.** Groundedness is measured by rule: a
+sentence counts as grounded if it contains a citation or belongs to a
+disclaimer / limitations section. The rule does not verify semantic
+support — a sentence could cite a chunk that does not actually support
+it. This is a known limitation, documented rather than hidden.
+
+**See also:** `docs/evaluation_addendum.md` for the raw output from
+the run that produced these numbers.

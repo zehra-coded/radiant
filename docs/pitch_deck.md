@@ -100,17 +100,20 @@ reason. Nothing is estimated.*
 - Patient-identifier denylist → hard failure, call refused
 - LLM never sees the image, never receives patient identifiers
 - Template fallback works during network outages
-- **During evaluation: 3 of 5 LLM outputs rejected by post-check and replaced.**
+- The LLM path produced valid output in 1 of 5 evaluation cases;
+  the rest fell back to the deterministic template reporter. Both
+  paths produced the same citations and disclaimer.
 
 **Narration (30s):**
 > "The safety gate runs twice. Before generation, it decides whether
 > the LLM may run at all. After generation, it validates every
 > citation against the retrieved set and blocks diagnosis or
-> treatment language. During our own evaluation, our network
-> dropped mid-run. The pipeline fell back to the deterministic
-> template reporter and produced the same citations, the same
-> structure, the same disclaimer. Zero fabricated citations reached
-> the output. This is what fail-closed means in practice."
+> treatment language. When the LLM's output fails validation —
+> for any reason — the pipeline falls back to the deterministic
+> template reporter, which produces the same citations and the
+> same disclaimer. In our groundedness evaluation, that fallback
+> engaged in 4 of 5 cases. Both paths produced citation validity
+> rate 1.000. This is what fail-closed means in practice."
 
 ---
 

@@ -147,13 +147,13 @@ Browser open at `http://localhost:8501`.
 **Show:** click the Safety tab.
 
 **Say:**
-> "The safety gate runs twice: once before generation, once after.
-> The post-check validates every citation against the retrieved set,
-> scans for diagnosis and treatment language, and blocks the output
-> if anything is wrong. During evaluation, three of five LLM attempts
-> were rejected by this gate and replaced by the template. Zero
-> fabricated citations reached the output. This is what fail-closed
-> looks like in practice."
+>  "The safety gate runs twice: once before generation, once after.
+>   The post-check validates every citation against the retrieved set,
+>   scans for diagnosis and treatment language, and blocks the output
+>   if anything is wrong. When the LLM's output fails the check, the
+>   pipeline falls back to the deterministic template reporter. Both
+>   paths are designed to fail closed: if anything is uncertain, the
+>   output is withheld or the case is marked for human review."
 
 ---
 
@@ -165,7 +165,7 @@ Browser open at `http://localhost:8501`.
 > "Every number in our evaluation comes from a real execution on
 > real data. 1000 real NIH test images for vision. 2000 real
 > Rad-SpRL reports for NLP. Six evaluation components. 105 passing
-> tests. The numbers aren't always flattering — our NLP hedge
+> tests. The numbers aren't always flattering - our NLP hedge
 > agreement is 0.11, our anatomy agreement is 0.23, and we document
 > those as weaknesses. Anything we couldn't measure is marked
 > 'NOT RUN' with a reason. Nothing in this repository is invented."
